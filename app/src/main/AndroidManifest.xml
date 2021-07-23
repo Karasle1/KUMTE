@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,6 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MHD"
         android:usesCleartextTraffic="true">
+
+
         <activity android:name=".Vysledek"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -21,7 +25,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
+
     </application>
 
 </manifest>
