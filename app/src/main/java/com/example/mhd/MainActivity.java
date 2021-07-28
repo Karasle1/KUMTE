@@ -60,14 +60,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     }
 
 
-    public void najdiPolohu(View v) {
-
-        //     LocationListener locationListener = new LocationListener();
-
-        ///////
+    public Location najdiPolohu(View v) {
         criteria = new Criteria();
         bestProvider = String.valueOf(locationManager.getBestProvider(criteria, true));
-
+      // Location aktPoloha = new Location();
 
         int REQUEST_CODE = 0;
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
@@ -80,17 +76,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         } else {
             Location poloha = locationManager.getLastKnownLocation(bestProvider);
 
-            //This is what you need:
-            if (poloha != null) {
-                Log.e("TAG", "GPS is on");
-                double sirka = poloha.getLatitude();
-                double delka = poloha.getLongitude();
-                Log.d("Poloha Delka", String.valueOf(delka));
-                Log.d("Poloha Sirka", String.valueOf(sirka));
-                Log.d("Konec", String.format("Konec"));
-                // Toast.makeText(MainActivity.this, "latitude:" + latitude + " longitude:" + longitude, Toast.LENGTH_SHORT).show();
-                //  searchNearestPlace(voice2text);
-            } else {
                 locationManager.requestLocationUpdates(bestProvider, 1000, 0.1f, this);
                 Log.e("TAG", "GPS is on");
                 double sirka = poloha.getLatitude();
@@ -98,22 +83,15 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 Log.d("Poloha Delka", String.valueOf(delka));
                 Log.d("Poloha Sirka", String.valueOf(sirka));
                 Log.d("Konec", String.format("Konec"));
-            }
-
-
-            //  Location poloha = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-            //   double sirka = poloha.getLatitude();
-            //   double delka = poloha.getLongitude();
-
 
         }
-        ///////
+        return  locationManager.getLastKnownLocation(bestProvider);
+    }
+    public void najdiZastavky()
+    {
+        Location aktPoloha = new Location();
+        aktPoloha = najdiPolohu();
 
-
-        //   Intent intentP = new Intent(this, Vysledek.class);
-        //    startActivity(intentP);
-
-        //todo
 
 
     }
